@@ -24,6 +24,10 @@ Since this won't be very broadly used, I'm not going to host a server for it lik
 
 - Run the Discord-bot.bat file. This should install the needed modules for python and start the bot in your command window. You should see chat messages for servers you added it to in the chat window.
 
+Open the Discord Bot.py file to view in your IDE and run the file with the play button. 
+It'll ask you what channel you want to run it on and how often you want heroes to be custom named. 
+Commands for Discord are: !create _____(creates a custom named hero), and !save. You'll need to type !save in Discord chat when you want to write to file and compile the game files. Reboot the game and the names should be there.
+
 
 other files in the folder:
 Gplbcc.exe compiler: This was put out by one of the Majesty Devs for modding purposes
