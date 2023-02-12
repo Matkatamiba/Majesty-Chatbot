@@ -21,7 +21,7 @@ You might need to use this (https://twitchapps.com/tmi/) link and use the OAth T
 
 Open the Twitch Bot.bat file. It'll install the needed module and then run the related python file. 
 It'll ask you what channel you want to run it on and how often you want heroes to be custom named. Commands for Twitch chat are !join (creates their username), !create _____(creates a custom named hero), and !save. You'll need to type !save in Twitch chat when you want to write to file and compile the game files. Reboot the game and the names should be there.
-
+Note: even if it says: 'ERROR: Compile failed.' it probably worked fine.
 
 other files in the folder:
 Gplbcc.exe compiler: This was put out by one of the Majesty Devs for modding purposes
