@@ -1,0 +1,20 @@
+<Majesty>
+	<Mod id="{EA7E1988-AE3A-47BF-9483-4CBB1DFE746B}">
+		<DataConfiguration>
+			<Dataset base="Any">
+				<Load>
+					<GPL>
+						<Target>compiled.bcd</Target>
+						<Source>mx_Hero_Births.gpl</Source>
+						<Source>HeroNamer.gpl</Source>
+					</GPL>
+				</Load>
+			</Dataset>
+		</DataConfiguration>
+		<DisplayName lang="en_US">Twitch Integration for Majesty</DisplayName>
+		<Description lang="en_US">
+			<Short>Allows hero renaming via !join and !create xxxxx commands. See readme for setup details or contact Matkatamiba for tech support.</Short>
+			<Long>instructions in the readme file</Long>
+		</Description>
+	</Mod>
+</Majesty>

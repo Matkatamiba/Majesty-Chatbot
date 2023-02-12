@@ -1,0 +1,181 @@
+///////////////////////////////////////////////////////////////////////////////
+function hero_birth(agent thisagent)
+
+declare
+	list buildings;
+	agent home;
+	agent palace, AIRootagent, HeroRenamerAgent;
+	boolean flag;
+	integer i;
+
+begin
+	AIRootAgent = $retrieveagent("GPLAIRoot");
+	
+	palace = $gettruepalace(thisagent);
+	
+	$HeroNamer(thisagent);
+	
+	$CreateEffector (THisAgent, "SpawnEffect_New", 1);
+
+	thisagent's "basicScript" = thisagent's "StartingScript";
+	thisagent's "activeScript" = thisagent's "StartingScript";
+	thisagent's "backscript" = thisagent's "StartingScript";
+
+	$setAttribute (ThisAgent, #ATTRIB_StoredGold, $randomnumber(#hero_start_gold) + #hero_start_gold);
+	if ($getattribute(thisagent,#ATTRIB_experienceLevel) < 1)
+		$setattribute(thisagent,#ATTRIB_experiencelevel,1);
+
+	$setattribute(thisagent,#ATTRIB_experience,0);
+
+	thisagent's "Target" = $NullAgent ();
+
+	AIRootAgent = $retrieveagent("GPLAIRoot");
+
+	if (AIRootAgent's "Quest_Number" == #QNumber_Fertile_Plain)
+		if ($getunitplayernumber(thisagent) == #Monster_player)
+		begin
+			thisagent's "Startingscript" = $raider;
+			thisagent's "basicscript" = $raider;
+			thisagent's "backscript" = $raider;
+			thisagent's "activescript" = $raider;
+			thisagent's "evaluationScript" = $monster_eval_enemies;
+			thisagent's "type" = "monster";
+			$NewThread( thisagent's "activeScript", #Normal_Cycle, thisagent );
+			thisagent's "raider_respond" = TRUE;
+			return;
+		end
+
+	if (AIRootAgent's "Quest_Number" == #QNumber_Day_Reckoning)
+		$advance_to_level(thisagent,4 + $randomnumber(3));
+
+	if (AIRootAgent's "Quest_Number" == #QNumber_Legendary_Heroes)
+		$advance_to_level(thisAgent,10 + $RandomNumber (10));
+
+	//If this exists and is set to true, then the Veteran Heroes special event
+	//has been kicked off.
+	If ($HasAttribute ("Spawn_High_Level_Heroes", AIRootAgent) )
+		begin
+
+			If (AIRootAgent's "Spawn_High_Level_Heroes")
+				begin
+
+					$advance_to_level( thisAgent, 8 + $RandomNumber (5) );
+
+				end
+
+		end
+
+	$NewThread( thisagent's "activeScript", #Normal_Cycle, thisagent );
+
+	if (thisagent's "home" == $nullagent())
+		thisagent's "home" = $parent(thisagent);
+
+	//If home is valid, then see if ThisAgent needs to go on the members list
+	if ($isvalidgamepiece(thisagent's "home"))
+		begin
+			home = thisagent's "home";
+			//if Home is a real, genuine palace, then it doesn't have hero slots
+			//and hence, doesn't
+			if (home's "subtype" == "palace")
+				thisagent's "home" = $nullagent();
+
+			//If home is an outpost, then see if it has open slots.
+			//Otherwise, do what we did with the palace, and set home to nullagent
+			//Note that this logic is only engaged if the home is the same player as thisagent
+			else if (home's "subtype" == "outpost")
+				begin
+					If ( ($GetUnitPlayerNumber (ThisAgent) == $GetUnitPlayerNumber (Home) ) && $GuildHasOpenSlots (Home) )
+						begin
+
+							Home's "Members" << ThisAgent;
+
+						end
+
+					Else
+						ThisAgent's "Home" = $NullAgent ();
+
+				end
+
+			//This is engaged if the hero was spawned by a guild, and hence
+			//It needs to go on the members list
+			else if ($hasattribute("members",home))
+						home's "members" << thisagent;
+
+			//This is here because perhaps the silly scripter spawned
+			//a hero from a non-guild library or something, which is certainly a validgamepiece
+			//but by no means a valid home
+			else
+				ThisAgent's "Home" = $NullAgent ();
+
+		end
+	// else reset their active script to wander or something
+	// see if they need to find a guild to join
+
+	flag = TRUE;
+	if ( $HasAttribute ( "Deathmatch_Rules", AIRootAgent ))
+		if ( AIRootAgent's "Deathmatch_Rules" == TRUE )
+			begin
+				$listobjects ( palace, "building", -1, buildings, #checktitles, "General_Housing", #MyPlayer );
+				if ( $ListSize ( buildings ) >= #Deathmatch_Housing_Limit )
+					flag = FALSE;
+			end
+
+	//No infrastructure in Valley of the Serpents
+	If (AIRootAgent's "Quest_Number" == #QNumber_Vale_Serpents)
+		begin
+
+			Flag = False;
+
+		end
+
+
+	if ($isvalidgamepiece(palace))
+		begin
+			palace's "Waiting_population" ++;
+			palace's "population_counter" ++;
+
+			if ( Flag == TRUE )
+				if (palace's "Waiting_population" >= #population_waiting_limit)
+					begin
+						$spawnunit(palace,"general_housing","maxhp");
+						palace's "Waiting_population" = 0;
+					end
+		end
+end
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+// Returns the Palace of the player ThisAgent belongs to, even if ThisAgent
+// is owned by an Outpost of the player.
+Function GetTruePalace (agent ThisAgent) is agent
+Declare
+	list	Palaces;
+	agent Palace;
+
+Begin
+
+	$ListObjects (ThisAgent, "Building", -1, Palaces, #CheckTitles, "Palace", #MyPlayer, #NoHiddenMap);
+
+	If (ThisAgent's "Title" == "Palace")
+		Palaces << ThisAgent;
+
+	If ($ListSize (Palaces) > 0)
+		return $ListMember (Palaces, 1);
+
+	return $NullAgent ();
+End
+
+//////////////////////////////////////////////////////////////////////////////
+expression #QNumber_Clash_Empires 30
+expression #QNumber_Darkness_Falls 31
+expression #QNumber_Fortress_Ixmil 32
+expression #QNumber_Legendary_Heroes 33
+expression #QNumber_Rise_Ratmen 34
+expression #QNumber_Scions_Chaos 35
+expression #QNumber_Siege 36
+expression #QNumber_Spires_Death 37
+expression #QNumber_Trade_Routes 38
+expression #QNumber_Urban_Renewal 39
+expression #QNumber_Vale_Serpents 40
+expression #QNumber_Vigil 41
+
