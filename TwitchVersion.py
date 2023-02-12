@@ -4,9 +4,9 @@ import websocket
 import subprocess
 
 # Register your bot with Twitch and obtain a client ID and an OAuth token
-client_id = "clientidthinglorumipsum"
+client_id = 'put your clientID here'
 # Called Client Secret or Token
-oauth_token = "token2token2token2token2token2"
+oauth_token = "put your token here"
 
 # Start listening for messages from the chat and writing them to a JSON file
 file_path = os.path.join(os.getcwd(), "HeroNamer.gpl")  # Use a relative file path
@@ -153,25 +153,3 @@ except websocket.WebSocketConnectionClosedException as e:
     print(f"Connection to Twitch chat was closed: {e}")
 except websocket.WebSocketException as e:
     print(f"An error occurred with the websocket connection: {e}")
-
-# try:
-#     # Use the Twitch API to retrieve information about the users who have used the "!join" command
-#     response = requests.get("https://api.twitch.tv/helix/users", params={
-#         "login": ",".join(usernames)
-#     }, headers={
-#         "Client-ID": client_id,
-#         "Authorization": oauth_token
-#     })
-#     print(response)  # Print the response from the Twitch API
-# except requests.exceptions.RequestException as e:
-#     print(f"An error occurred while requesting user information from the Twitch API: {e}")
-# else:
-#     # Check if the list of users is empty
-#     if "data" not in response.json():
-#         print("No users were found.")
-#     else:
-#         # Print the usernames and other information about the users
-#         for user in response.json()["data"]:
-#             print(f"Username: {user['login']}")
-#             print(f"Display name: {user['display_name']}")
-#             print(f"Profile image: {user['profile_image_url']}")
