@@ -8,7 +8,7 @@ and make a new folder. Call it MajestyChatbot (or whatever you'd like) and put a
 
 Since this won't be very broadly used, I'm not going to host a server for it like other discord bots do. To set up a bot account on Discord, you will need to follow these steps:
 
-- Download Python 3 (https://www.python.org/downloads/). 
+- Download Python 3 (https://www.python.org/downloads/). Install and check the box for `Add Python.exe to PATH'
 
 - You can create a bot account by going to the Developer Dashboard (https://discord.com/developers/applications).
 
