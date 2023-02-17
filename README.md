@@ -18,11 +18,11 @@ Since this won't be very broadly used, I'm not going to host a server for it lik
 
 - On the left bar, select Bot. Click the blue Add Bot button on the right. (If it prompts you to save in any of these steps, save.)
 
-- Find Message Content Intent (about halfway down the page) and enable it
+- Find 'Message Content Intent' (about halfway down the page) and enable it
 
 - Press the blue Reset Token near the top of this page. It should give you a very long series of numbers and letters. Take this token, open the discord-version.py file in a text editor, and copy paste it into the token in the Discord-bot.py file near the top (currently, it's on line 8).
 
-- On the left side, go to OAuth2. Check Bot and then check Read Message History. Go to URL Generator on the left side and check the same Bot and Read Message History.
+- On the left side, go to OAuth2. Check the box for 'Bot' and then check 'Read Message History'. Go to URL Generator on the left side and check the same Bot and Read Message History.
 
 - Copy the Generated URL into your browser and you should be able to invite your bot to join whatever servers you have invite powers for.
 
