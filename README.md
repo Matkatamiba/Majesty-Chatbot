@@ -1,7 +1,7 @@
 # Discord Version
 
 Go to C:\Users\yourname\Documents\My Games\MajestyHD\Mods
-and make a new folder. Call it whatever and put all this in there.
+and make a new folder. Call it MajestyChatbot (or whatever you choose) and put all this in there.
 
 Download Python 3. Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
 
