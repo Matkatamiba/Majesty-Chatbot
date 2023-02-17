@@ -20,7 +20,7 @@ Since this won't be very broadly used, I'm not going to host a server for it lik
 
 - Find Message Content Intent (about halfway down the page) and enable it
 
-- Press the blue Reset Token near the top of this page. It should give you a very long series of numbers and letters. Take this token and copy paste it into the token in the Discord-bot.py file near the top (currently, it's on line 8).
+- Press the blue Reset Token near the top of this page. It should give you a very long series of numbers and letters. Take this token, open the discord-version.py file in a text editor, and copy paste it into the token in the Discord-bot.py file near the top (currently, it's on line 8).
 
 - On the left side, go to OAuth2. Check Bot and then check Read Message History. Go to URL Generator on the left side and check the same Bot and Read Message History.
 
