@@ -3,7 +3,7 @@
 Go to C:\Users\yourname\Documents\My Games\MajestyHD\Mods
 and make a new folder. Call it MajestyChatbot (or whatever you choose) and put all this in there.
 
-Download Python 3. Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
+Download Python 3 (https://www.python.org/downloads/) Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
 
 
 Since this won't be very broadly used, I'm not going to host a server for it like other discord bots do. It's easy enough to set up your own bot to run it when you need it (for the like 5 people this is relevant to). To set up a bot account on Discord, you will need to follow these steps:
@@ -41,7 +41,7 @@ TwitchHeroes.gplproj, TwitchHeroes.mmxml: Files for modding that point the mod o
 Go to C:\Users\yourname\Documents\My Games\MajestyHD\Mods
 and make a new folder. Call it MajestyChatbot (or whatever you choose) and put all this in there.
 
-Download Python 3. Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
+Download Python 3 (https://www.python.org/downloads/). Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
 
 
 To set up a bot account on Twitch, you will need to follow these steps:
