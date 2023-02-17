@@ -2,7 +2,7 @@
 Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
 
 Go to C:\Users\yourname\Documents\My Games\MajestyHD\Mods
-and make a new folder. Call it MajestyChatbot (or whatever you choose) and put all this in there.
+and make a new folder. Call it MajestyChatbot (or whatever you'd like) and put all this in there.
 
 
 
@@ -14,11 +14,11 @@ Since this won't be very broadly used, I'm not going to host a server for it lik
 
 - Click on "Applications" in the left-hand menu, then click the blue "New Application" button on the top right.
 
-- Call your bot whatever you want and accept the terms.
+- Call your bot MajestyChatbot (or whatever you'd like) and accept the terms.
 
 - On the left bar, select Bot. Click the blue Add Bot button on the right. (If it prompts you to save in any of these steps, save.)
 
-- Check Message Content Intent (about halfway down the page)
+- Find Message Content Intent (about halfway down the page) and enable it
 
 - Press the blue Reset Token near the top of this page. It should give you a very long series of numbers and letters. Take this token and copy paste it into the token in the Discord-bot.py file near the top (currently, it's on line 8).
 
@@ -53,7 +53,7 @@ Click on "Applications" in the left-hand menu, then click the "Create New Applic
 
 - Download Python 3 (https://www.python.org/downloads/). 
 - 
-- Fill out the form with the required information, including the name of your bot, a brief description, and a redirect URI.
+- Fill out the form with the required information, including the name of your bot, a brief description, and a redirect URL.
 
 - Once you have created your application, click on the "Generate" button under the "Client ID" section to generate a unique client ID for your bot.
 
