@@ -24,7 +24,7 @@ Since this won't be very broadly used, I'm not going to host a server for it lik
 
 - On the left side, go to OAuth2. Under Default Authorization Link > AUTHORIZATION METHOD, select In-App App Authorization.
 
-- Under scopes, check the box for 'Bot' and then check 'Read Message History' under Bot Permissions. Go to URL Generator on the left side and check the same Bot and Read Message History.
+- Under scopes, check the box for 'bot' and then check 'Read Message History' under Bot Permissions. Go to URL Generator on the left side and check the same Bot and Read Message History.
 
 - Copy the Generated URL into your browser and you should be able to invite your bot to join whatever servers you have invite powers for.
 
@@ -57,7 +57,7 @@ You can create a bot account by going to the Developer Dashboard (https://dev.tw
 Click on "Applications" in the left-hand menu, then click the "Create New Application" button.
 
 - Download Python 3 (https://www.python.org/downloads/). 
-- 
+
 - Fill out the form with the required information, including the name of your bot, a brief description, and a redirect URL.
 
 - Once you have created your application, click on the "Generate" button under the "Client ID" section to generate a unique client ID for your bot.
