@@ -1,81 +1,25 @@
-# Discord Version
-Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
+Twitch chat can rename heroes in game with chat commands. Twitch channel doesn't even have to be live!
 
-Go to C:\Users\yourname\Documents\My Games\MajestyHD\Mods
-and make a new folder. Call it MajestyChatbot (or whatever you'd like) and put all this in there.
+!join		(adds their username to the hero list)
+!name _____ 	(adds a custom named hero to the list, can be turned off)
+!remove _____   (remove a name you don't like)
 
+Mod files get downloaded to C:\SteamLibrary\steamapps\workshop\content\73230\2908092423 or your equivalent.
 
+1. Create an Oauth token. Use the following link: https://twitchapps.com/tmi/ to get the OAuth Token for the next step. It looks something like oauth:li8efebxigsupoit6d84291onbem8e
 
-Since this won't be very broadly used, I'm not going to host a server for it like other discord bots do. To set up a bot account on Discord, you will need to follow these steps:
+2. In the OAuth.py file, replace the oauth_token value with the new oauth token in the quotes. Save the OAuth.py file.
 
-- Download Python 3 (https://www.python.org/downloads/). Install and check the box for `Add Python.exe to PATH'
+3. Download Python 3 and install it. https://www.python.org/downloads/release/python-3121/ but any version of Python 3 should work.
 
-- You can create a bot account by going to the Developer Dashboard (https://discord.com/developers/applications).
+4. Run the Twitch Bot.bat file.
 
-- Click on "Applications" in the left-hand menu, then click the blue "New Application" button on the top right.
+5. A command prompt will open and you will be prompted to enter the channel you want to run it on, whether you want chat to custom name heroes (enter at thine own risk with Twitch chat), and how often you want heroes to be custom named.
 
-- Call your bot MajestyChatbot (or whatever you'd like) and accept the terms.
+6. People can now start naming stuff. List will be updated on the next level you start. Rerun the Twitch Bot.bat file if you want a full new set of names.
 
-- On the left bar, select Bot. Click the blue Add Bot button on the right. (If it prompts you to save in any of these steps, save.)
+Try booting the game before starting the script so that Steam Workshop doesn't overwrite your mod files.
+Names will be updated on hero spawn, so you'll see different names during their creation bars.
 
-- Find 'Message Content Intent' (about halfway down the page) and enable it.
-
-- Press the blue Reset Token near the top of this page. It should give you a very long series of numbers and letters. Take this token, open the discord-version.py file in a text editor, and copy paste it into the token in the Discord-bot.py file near the top (currently, it's on line 8).
-
-- On the left side, go to OAuth2. Under Default Authorization Link > AUTHORIZATION METHOD, select In-App App Authorization.
-
-- Under scopes, check the box for `bot` and then check `Read Message History` under `Bot Permissions`. Go to URL Generator on the left side and check the same Bot and Read Message History.
-
-- Copy the Generated URL into your browser and you should be able to invite your bot to join whatever servers you have invite powers for.
-
-- Run the Discord-bot.bat file. This should install the needed modules for python and start the bot in your command window. You should see chat messages for servers you added it to in the chat window.
-
-
-
-Open the Twitch Bot.bat file. It'll install the needed module(s) and then run the related python file.
-It'll ask you what channel you want to run it on and how often you want heroes to be custom named. 
-Commands for Discord are: !create _____(creates a custom named hero), and !save. You'll need to type !save in Discord chat when you want to write to file and compile the game files. Reboot the game and the names should be there.
-
-Note: even if it says: 'ERROR: Compile failed.' it probably worked fine.
-
-other files in the folder:
-Gplbcc.exe compiler: This was put out by one of the Majesty Devs for modding purposes
-GPL_COMPILER.bat file: This runs the Majesty compiler with and creates .bcd files
-compiled.bcd: The compiled code for Majesty to read
-TwitchHeroes.gplproj, TwitchHeroes.mmxml: Files for modding that point the mod on what to read
-
-
-
-# Twitch Version
-Feel free to read through the code in any of these files. Python and Majesty's custom .GPL (GamePlay Language) are both fairly easy to read and are a fun way to learn coding.
-
-Go to C:\Users\yourname\Documents\My Games\MajestyHD\Mods
-and make a new folder. Call it MajestyChatbot (or whatever you choose) and put all this in there.
-
-To set up a bot account on Twitch, you will need to follow these steps:
-You can create a bot account by going to the Developer Dashboard (https://dev.twitch.tv/dashboard).
-Click on "Applications" in the left-hand menu, then click the "Create New Application" button.
-
-- Download Python 3 (https://www.python.org/downloads/). 
-
-- Fill out the form with the required information, including the name of your bot, a brief description, and a redirect URL.
-
-- Once you have created your application, click on the "Generate" button under the "Client ID" section to generate a unique client ID for your bot.
-
-- Now, you will need to create an access token for your bot so that it can authenticate with the Twitch API. To do this, click on the "Generate" button under the "Secret" section.
-You might need to use this (https://twitchapps.com/tmi/) link and use the OAth Token from there. Some combination of these should work.
-
-- You should find a client ID and authorization token. Use that info in twitchmajesty.py on lines 7 and 9 for those values (in quotes as shown), and save the .py file.
-
-
-
-Open the Twitch Bot.bat file. It'll install the needed module(s) and then run the related python file. 
-It'll ask you what channel you want to run it on and how often you want heroes to be custom named. Commands for Twitch chat are !join (creates their username), !create _____(creates a custom named hero), and !save. You'll need to type !save in Twitch chat when you want to write to file and compile the game files. Reboot the game and the names should be there.
-
-Note: even if it says: 'ERROR: Compile failed.' it probably worked fine.
-
-other files in the folder:
-Gplbcc.exe compiler: This was put out by one of the Majesty Devs for modding purposes
-GPL_COMPILER.bat file: This runs the Majesty compiler with and creates .bcd files
-compiled.bcd: The compiled code for Majesty to read
-TwitchHeroes.gplproj, TwitchHeroes.mmxml: Files for modding that point the mod on what to read
+If you have issues, message the mod page or add me and I'll try to help.
+Many thanks to Enerril for help coding the last jank part for Majesty. This should work with other mods, so long as they don't mess with the hero_birth function.
