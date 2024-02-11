@@ -1,6 +1,5 @@
 @echo off
 cd /d %~dp0
-pip install websocket-client
-python "TwitchVersion.py"
-echo Either the script is done running or your token is invalid
+python "TwitchMajesty.py"
+echo Connection to Twitch closed. You may need to regenerate a token at https://twitchapps.com/tmi/ Rerun .bat file. 
 pause

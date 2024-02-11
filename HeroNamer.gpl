@@ -1,0 +1,26 @@
+function HeroNamer(agent thisagent)
+declare
+    integer i, HeroCount;
+    string name;
+    list NameOptions;
+    agent AIRootAgent;
+begin
+    AIRootAgent = $retrieveagent("GPLAIRoot");
+    if ($HasAttribute("CustomNames", AIRootAgent) == False)
+        begin
+            NameOptions << "Shaun White, American Hero";
+            $AddAttribute(AIRootAgent,"HeroNames","List",NameOptions);
+        end
+    $AddAttribute(AIRootAgent,"CustomNames","Boolean",True);
+    HeroCount = $listsize(AIRootAgent's "HeroNames");
+    if (HeroCount > 0)
+        begin
+            if ($randomnumber(0) == 0)
+                begin
+                    i = $randomnumber(HeroCount) + 1;
+                    name = $listmember(AIRootAgent's "HeroNames",i);
+                    AIRootAgent's "HeroNames" -= name;
+                    $SpecifyName(thisagent, name);
+                end
+        end
+end

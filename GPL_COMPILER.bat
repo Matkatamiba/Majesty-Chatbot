@@ -2,7 +2,7 @@
 
 set OUTPUTNAME=compiled.bcd
 rem The project file that defines what files will be compiled
-set GPLPROJECTFILE=TwitchHeroes.gplproj
+set GPLPROJECTFILE=ChatNamesHeroes.gplproj
 
 set GPLBCC=""
 rem Is the compiler in the Quest's source directory?

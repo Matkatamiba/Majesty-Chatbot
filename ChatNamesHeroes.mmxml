@@ -1,0 +1,20 @@
+<Majesty>
+	<Mod id="{EA7E1988-AE3A-47BF-9483-4CBB1DFE746B}">
+		<DataConfiguration>
+			<Dataset base="Any">
+				<Load>
+					<GPL>
+						<Target>compiled.bcd</Target>
+						<Source>mx_Hero_Births.gpl</Source>
+						<Source>HeroNamer.gpl</Source>
+					</GPL>
+				</Load>
+			</Dataset>
+		</DataConfiguration>
+		<DisplayName lang="en_US">Twitch Chat Hero Naming</DisplayName>
+		<Description lang="en_US">
+			<Short>!join and !name in chat to name heroes! See Readme for setup details. Files are at C:\Program Files (x86)\Steam\steamapps\workshop\content\73230\2908092423</Short>
+			<Long>Allows hero renaming via !join and !create xxxxx commands. See Readme for setup details. Files to run are at C:\Program Files (x86)\Steam\steamapps\workshop\content\73230\2908092423</Long>
+		</Description>
+	</Mod>
+</Majesty>

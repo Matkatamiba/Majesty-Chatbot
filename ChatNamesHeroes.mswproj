@@ -1,0 +1,18 @@
+<Majesty>
+	<SteamWorkshop id="2908092423" visibility="Public">
+		<Title lang="en_US">Twitch Chat Integration for Majesty</Title>
+		<Description lang="en_US">Allows Twitch chat to name heroes with '!join' and '!create heroname' commands.
+
+!join adds their username to the hero name list.
+!create McLovin adds a hero named McLovin to the hero name list.
+
+Only allows letters, numbers, commas, abd spaces for names.
+
+Setup is a bit jank, but it does work. Includes making a Twitch bot, which isn't hard, but is weird if you're unfamiliar. Many thanks to @Enerril for help coding the last jank part for Majesty.
+
+More detailed readme included.</Description>
+		<ContentPath>C:\Users\jwyck\Documents\My Games\MajestyHD\TwitchChatHeroes</ContentPath>
+		<PreviewImagePath>C:\Users\jwyck\Downloads\2908092423_preview_2021-03-21 01_59_17-Window.png</PreviewImagePath>
+		<IDTag>Mod</IDTag>
+	</SteamWorkshop>
+</Majesty>
