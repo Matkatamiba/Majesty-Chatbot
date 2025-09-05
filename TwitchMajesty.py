@@ -3,6 +3,10 @@ import websocket
 import subprocess
 from OAuth import oauth_token  # Import the variables from the config file
 
+
+usernames = set()      # current hero list
+blacklist = set()      # permanently removed names
+
 # Start listening for messages from the chat and writing them to a JSON file
 file_path = os.path.join(os.getcwd(), "HeroNamer.gpl")  # Use a relative file path
 data = []
@@ -95,48 +99,65 @@ def filter_alphanumeric_comma_space(string):
 
 
 def process_message(message):
-    # Extract the username and message that was typed by the user
-    username = message.split(".tmi.twitch.tv PRIVMSG #")[0].split("@")[1]
-    message = message.split(":")[2]
-    print(username,":", message)
+    if "PRIVMSG" not in message:
+        return  # ignore JOIN, PART, NAMES, etc.
 
-    # if they type !join, it uses their username
-    if message.startswith("!join"):
-        usernames.add(username.capitalize())  # Add the username to the set
-        print("Added", username, "to hero list.")
+    try:
+        prefix, msg = message.split("PRIVMSG", 1)
+        username = prefix.split("!")[0].lstrip(":").split("@")[0]
+        chat_message = msg.split(":", 1)[1]
+    except IndexError:
+        return
 
-    # if they type !name, it instead uses the words after the !name command, only works if !name is enabled
-    elif allow_name and message.startswith("!name "):
-        _,username = message.split("!name ")
+    username = filter_alphanumeric_comma_space(username)
+    chat_message = chat_message.strip()
 
-        # removing nonenglish and sus symbols for security and functionality with Majesty GPL
-        username = filter_alphanumeric_comma_space(username)
-        usernames.add(username)
-        print("Added", username, "to hero list.")
+    #print(username, ":", chat_message)
 
-    # If they type !remove, it removes the specified username
-    elif message.startswith("!remove "):
-        _, username = message.split("!remove ")
+    # Handle !name command
+    if allow_name and chat_message.startswith("!name "):
+        _, custom_name = chat_message.split("!name ", 1)
+        custom_name = filter_alphanumeric_comma_space(custom_name)
 
-        username = filter_alphanumeric_comma_space(username)
-        if username in usernames:
-            print("Removed", username, "from hero list.")
+        if custom_name not in blacklist:
+            usernames.add(custom_name)
+            print("Added", custom_name, "to hero list.")
         else:
-            print("Username not found:", username)
-        usernames.discard(username)
+            print(custom_name, "is permanently removed and cannot be added.")
 
+    # Handle !remove command
+    elif chat_message.startswith("!remove "):
+        _, remove_name = chat_message.split("!remove ", 1)
+        remove_name = filter_alphanumeric_comma_space(remove_name)
+
+        # Remove from current hero list and add to blacklist
+        usernames.discard(remove_name)
+        blacklist.add(remove_name)
+        print("Removed", remove_name, "permanently from hero list.")
+
+    # Default: add user who sent a message
+    else:
+        if username.capitalize() not in blacklist:
+            usernames.add(username.capitalize())
+            print("Added", username, "to hero list.")
+        else:
+            print(username, "is permanently removed and cannot be added.")
+
+    # Shuffle and print current list
+    import random
+    usernames_list = list(usernames)
+    random.shuffle(usernames_list)
     print("Current list of usernames:")
-    for username in usernames:
-        print(username)
+    print(', '.join(usernames_list))
 
 
-    if message.startswith("!"):
-        write_to_json_file(list(usernames), file_path)
-        # Run the Majesty compiler after saving the names to the .gpl file
-        try:
-            subprocess.run(["GPL_COMPILER.bat"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        except subprocess.CalledProcessError as e:
-            print(f"Error running GPL_COMPILER.bat: {e}")
+    write_to_json_file(usernames_list, file_path)
+    try:
+        subprocess.run(["GPL_COMPILER.bat"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except subprocess.CalledProcessError as e:
+        print(f"Error running GPL_COMPILER.bat: {e}")
+
+
 
 
 # Set the event handler for messages received from the chat
